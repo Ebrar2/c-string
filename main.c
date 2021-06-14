@@ -1,34 +1,37 @@
 #include <stdio.h>
 #include <stdlib.h>
-int farkiSay(char *d,char *c)
+#include<ctype.h>
+#include<string.h>
+int checkAcronomy(char *d,char *c)
 {
-    int i,say=0;
-    for(i=0;d[i]!='\0';i++)
-    {
-        if(d[i]!=c[i])
-            say++;
+   char e[10],*k,x;
+   int a=0;
+   e[a]=d[a];
+   a++;
+   k=strstr(d," ");
+   while(k!=NULL)
+   {
+        x=toupper(d[k-d+1]);
+        e[a]=x;
+        printf("\ne:%s k-d+1:%d a:%d",e,k-d+1,a);
+        k=strstr(k+1," ");
+         a++;
     }
-    return say;
+    e[a]='\0';
+    c[a]='\0';
+    if(!(strcmp(e,c)))
+           return 1;
+    else
+        return 0;
 }
 int main()
 {
-    char d[50],c[50];
-    int far,i;
-    printf("Ilk kelimeyi giriniz:");
+    char d[50];
+    char c[10];
+    printf("Cumle giriniz:");
     fgets(d,50,stdin);
-    do
-    {
-        printf("\nSonraki kelimeyi giriniz:");
-        fgets(c,50,stdin);
-        far=farkiSay(d,c);
-        if(far==1)
-            printf("\n(1 harf farkli zincir bozulmadi)\n");
-        else
-            printf("\n(%d harf farkli zincir bozuldu\n",far);
-        for(i=0;d[i]!='\0';i++)
-              d[i]=c[i];
-    }
-    while(far==1);
-        printf("Program bitti");
+    printf("Kisaltmayi giriniz:");
+    fgets(c,10,stdin);
+    printf("\n\nSonuc:%d",checkAcronomy(d,c));
     return 0;
 }
