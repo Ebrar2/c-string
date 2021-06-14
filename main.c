@@ -1,19 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
-void yapitirnk(char *s1,int x,char *s2,int y)
+void spacemask(char *d)
 {
-    int i,j=0;
-    for(i=x-1;j!=y;i++)
+    int i;
+    for(i=0;d[i]!='\0';i++)
     {
-         s1[i]=s2[j];
-         j++;
+        if(d[i]==' ')
+            d[i]='_';
     }
 }
 int main()
 {
-    char s1[]="Bilgisayar Arasinav";
-    char s2[]="102 Dersi";
-    yapitirnk(s1,12,s2,3);
-    printf("%s\n",s1);
+    char sample[]="This is a test";
+    printf("Once:\n");
+    printf("%s",sample);
+    spacemask(sample);
+    printf("\nSonra:\n");
+    printf("%s",sample);
     return 0;
 }
