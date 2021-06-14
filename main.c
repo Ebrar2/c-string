@@ -1,24 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include<ctype.h>
-int sozukSay(char *d)
-{
-    int i,say=0;
-    for(i=0;d[i]!='\0';i++)
-    {
-        if(d[i]==' ' && isalpha(d[i+1]))
-            say++;
-        if(i==0 && isalpha(d[i])==1)
-            say++;
-    }
-
-    return say;
-}
+#include<string.h>
 int main()
 {
-    char d[40];
-    printf("Cumleyi giriniz:");
-    fgets(d,40,stdin);
-    printf("\n\n\nGirilen cumle %d tane sozcukten olusmakatadir",sozukSay(d));
+    char d[10][20];
+    int i,a;
+    printf("Isimleri giriniz:\n");
+    for(i=0;i<10;i++)
+     {
+         scanf("%s",d[i]);
+         printf("\n");
+     }
+    printf("an ile bitenler:\n");
+    for(i=0;i<10;i++)
+    {
+        a=strlen(d[i]);
+        if(d[i][a-2]=='a'  &&  d[i][a-1]=='n')
+            printf("%s\n",d[i]);
+    }
     return 0;
 }
