@@ -1,24 +1,39 @@
 #include <stdio.h>
 #include <stdlib.h>
+void hesapla(char *dog,char *o,int *d,int *y,int *b)
+{
+    int i,dogru=0,yanlis=0,bos=0,x,z;
+    for(i=0;dog[i+1]!='\0';i++)
+    {
+        x=dog[i];
+        z=o[i];
+        if(((dog[i]==o[i])|| (dog[i]!=o[i] && x+32==z)) && o[i]!=' ')
+            dogru++;
+        else if(o[i]==' ')
+            bos++;
+        else
+            yanlis++;
+        printf("\ndog[%d]:%c o[%d]:%c x:%d z:%d dogru:%d bos:%d yanlis:%d",i,dog[i],i,o[i],x,z,dogru,bos,yanlis);
 
+
+    }
+    *d=dogru;
+    *b=bos;
+    *y=yanlis;
+
+}
 int main()
 {
-    char d[100];
-    int x=0,y=0,i;
-    printf("Dizgiyi giriniz:");
-    fgets(d,100,stdin);
-    for(i=0;d[i]!='\0';i++)
-    {
-        if(d[i]=='a' || d[i]=='ý' || d[i]=='o' || d[i]=='u')
-            x++;
-        else if(d[i]=='e' || d[i]=='i' || d[i]=='ö' || d[i]=='ü')
-            y++;
-    }
-    if(x==0 && y!=0)
-        printf("\nBuyu unlu uyumuna uyar");
-    else if(x!=0 && y==0)
-        printf("\nBuyu unlu uyumuna uyar");
-    else
-        printf("\nBuyuk unlu uyumuna uymaz");
+    char dog[100],o[100];
+    int d=0,y=0,b=0;
+    printf("Dogru cevap anahtarini giriniz:");
+    fgets(dog,100,stdin);
+    printf("Ogrencinin cevap anahtarini giriniz:");
+    fgets(o,100,stdin);
+    hesapla(dog,o,&d,&y,&b);
+    printf("\nDogru sayisi:%d",d);
+    printf("\nYanlis sayisi:%d",y);
+    printf("\nBos sayisi:%d",b);
+
     return 0;
 }
