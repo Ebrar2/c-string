@@ -1,45 +1,32 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include<string.h>
-#include<ctype.h>
+void hesapla(char *d,int *b,int *g,int *f)
+{
+    int x=0,y=0,z=0;
+    int i;
+    for(i=0;d[i]!='\0';i++)
+    {
+        if(d[i]=='B' || d[i]=='b')
+            x++;
+        else if(d[i]=='G' || d[i]=='g')
+            y++;
+        else if(d[i]=='F' || d[i]=='f')
+            z++;
+    }
+    *b=x/5;
+    *g=y/5;
+    *f=z/5;
+}
 int main()
 {
-     char d[10][10],*k,gec[10][10];
-     int e[10]={0};
-     int i,j,z;
-     printf("Isim ve notlari giriniz:\n");
-     for(i=0;i<10;i++)
-     {
-        scanf ("%[^\n]", d[i]);
-        fflush(stdin);
-     }
-     for(i=0;i<10;i++)
-     {
-         k=strstr(d+i," ");
-         e[i]=atoi(k+1);
-     }
+    char d[60];
+    int b,f,g;
+    printf("Sampiyonluklari giriniz(1959-):\n");
+    fgets(d,60,stdin);
+    hesapla(d,&b,&g,&f);
+    printf("\nBesiktas yildiz sayisi:%d\n",b);
+    printf("\nFenerbahce yildiz sayisi:%d\n",f);
+    printf("\nGalatasaray yildiz sayisi:%d\n",g);
 
-     for(i=0;i<10;i++)
-     {
-         for(j=i+1;j<10;j++)
-         {
-             if(e[i]<e[j])
-             {
-                 int gec2;
-                 gec2=e[i];
-                 e[i]=e[j];
-                 e[j]=gec2;
-                 strcpy(gec,d[i]);
-                 //printf("\ngec:%s d[i]:%s d[j]:%s",gec,d[i],d[j]);
-                 strcpy(d[i],d[j]);
-                 strcpy(d[j],gec);
-                 //printf("\ngec:%s d[i]:%s d[j]:%s",gec,d[i],d[j]);
-
-             }
-         }
-     }
-     printf("\n\nNota gore sirala\n\n");
-     for(i=0;i<10;i++)
-        printf("%s\n",d[i]);
     return 0;
 }
