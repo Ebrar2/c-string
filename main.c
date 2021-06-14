@@ -1,27 +1,34 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include<string.h>
-int kacinci(char s[],char s2[])
+int farkiSay(char *d,char *c)
 {
-    char *p,s1[strlen(s)+1];
-    int say=0;
-    strcpy(s1,s);
-    p=strtok(s1," ");
-    say++;
-    if(strcmp(p,s2)==0)
-         return 1;
-    while(p!=NULL)
+    int i,say=0;
+    for(i=0;d[i]!='\0';i++)
     {
-          say++;
-          p=strtok(NULL," ");
-          if(strcmp(p,s2)==0)
-            return say;
+        if(d[i]!=c[i])
+            say++;
     }
+    return say;
 }
 int main()
 {
-    char s1[]="Bil102 final sinavi bitti";
-    char s2[]="sinavi";
-    printf("%s\ndizgisinde %s dizgisi %d.kelimededir",s1,s2,kacinci(s1,s2));
+    char d[50],c[50];
+    int far,i;
+    printf("Ilk kelimeyi giriniz:");
+    fgets(d,50,stdin);
+    do
+    {
+        printf("\nSonraki kelimeyi giriniz:");
+        fgets(c,50,stdin);
+        far=farkiSay(d,c);
+        if(far==1)
+            printf("\n(1 harf farkli zincir bozulmadi)\n");
+        else
+            printf("\n(%d harf farkli zincir bozuldu\n",far);
+        for(i=0;d[i]!='\0';i++)
+              d[i]=c[i];
+    }
+    while(far==1);
+        printf("Program bitti");
     return 0;
 }
