@@ -1,39 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
-void hesapla(char *dog,char *o,int *d,int *y,int *b)
-{
-    int i,dogru=0,yanlis=0,bos=0,x,z;
-    for(i=0;dog[i+1]!='\0';i++)
-    {
-        x=dog[i];
-        z=o[i];
-        if(((dog[i]==o[i])|| (dog[i]!=o[i] && x+32==z)) && o[i]!=' ')
-            dogru++;
-        else if(o[i]==' ')
-            bos++;
-        else
-            yanlis++;
-        printf("\ndog[%d]:%c o[%d]:%c x:%d z:%d dogru:%d bos:%d yanlis:%d",i,dog[i],i,o[i],x,z,dogru,bos,yanlis);
-
-
-    }
-    *d=dogru;
-    *b=bos;
-    *y=yanlis;
-
-}
+#include<string.h>
 int main()
 {
-    char dog[100],o[100];
-    int d=0,y=0,b=0;
-    printf("Dogru cevap anahtarini giriniz:");
-    fgets(dog,100,stdin);
-    printf("Ogrencinin cevap anahtarini giriniz:");
-    fgets(o,100,stdin);
-    hesapla(dog,o,&d,&y,&b);
-    printf("\nDogru sayisi:%d",d);
-    printf("\nYanlis sayisi:%d",y);
-    printf("\nBos sayisi:%d",b);
+    char d[50],e[50];
+    int i,x,y,say=0;
+    printf("Misralari giriniz:\n");
+    printf("1.misra:\n");
+    fgets(d,50,stdin);
+    printf("2.misra:\n");
+    fgets(e,50,stdin);
+    x=strlen(d);
+    y=strlen(e);
+    for(i=0;d[x-1-i]!=' ' &&  e[y-1-i]!=' ';i++)
+    {
+        if(d[x-1-i]==e[y-1-i])
+            say++;
+
+    }
+    if(say==i)
+        printf("\n\nGirilen misralarda cinasli kafiye vardir");
+    else
+       printf("\n\nGirilen misralarda cinasli kafiye yoktur");
+
 
     return 0;
 }
