@@ -1,30 +1,43 @@
 #include <stdio.h>
 #include <stdlib.h>
-void hesapla(char *d,int *x,int *y,int *b)
-{
-    int i,a=0,c=0,e=0;
-    for(i=0;d[i]!='\0';i++)
-    {
-        if(d[i]=='X' || d[i]=='x')
-            *x+=1;
-        else if(d[i]=='Y' || d[i]=='y')
-            *y+=1;
-        else if(d[i]==' ')
-            *b+=1;
-    }
-  /**x=a;
-    *y=c;
-    *b=e;*/
-}
+#include<time.h>
+#include<string.h>
 int main()
 {
-    char d[50];
-    int x=0,y=0,b=0;
-    printf("Robot icin komut dizigisini:");
-    fgets(d,50,stdin);
-    hesapla(d,&x,&y,&b);
-    printf("\n\nBekleme sayisi:%d\n",b);
-    printf("Son konumun x i:%d\n",x);
-    printf("Son konumun y si:%d\n",y);
+    char sifat[5][20]={"Bu","Su","O","Bir","Birkac"};
+    char ozne[5][20]={"adam","cocuk","kus","kedi","araba"};
+    char tumlec[5][20]={"sinif","kapan","orman","cayir","agac"};
+    char tumlecek[5][20]={"a","dan","in ustunden","in altindan","in icinden"};
+    char yuklem[5][20]={"atladi.","kacti.","zipladi.","kostu.","dustu."};
+    char d[40];
+    srand(time(NULL));
+    int x,a=0;
+   while(a!=5)
+    {
+      a++;
+      int b;
+    b=strlen(d);
+    x=rand()%5;
+    strcpy(d,sifat[x]);
+    b=strlen(d);
+    d[b]=' ';
+    d[b+1]='\0';
+    x=rand()%5;
+    strcat(d,ozne[x]);
+    b=strlen(d);
+    d[b]=' ';
+    d[b+1]='\0';
+    x=rand()%5;
+    strcat(d,tumlec[x]);
+    x=rand()%5;
+    strcat(d,tumlecek[x]);
+    x=rand()%5;
+    b=strlen(d);
+    d[b]=' ';
+    d[b+1]='\0';
+    strcat(d,yuklem[x]);
+    printf("\n\n\nCumle:\n");
+    printf("%s",d);
+    }
     return 0;
 }
