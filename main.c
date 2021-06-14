@@ -1,28 +1,41 @@
 #include <stdio.h>
 #include <stdlib.h>
-void fazlaBoslukSil(char *d)
+#include<string.h>
+void cogulYap(char *d,char *d2)
 {
-    int i,j;
-    for(i=0;d[i]!='\0';i++)
+    int x;
+    x=strlen(d);
+    strcpy(d2,d);
+    if(d2[x-1]=='y')
     {
-        if(d[i]==' ' && d[i+1]==' ')
-        {
-
-            for(j=i;d[j]!='\0';j++)
-            {
-                d[j]=d[j+1];
-            }
-            i=0;
-        }
-
+        d2[x-1]='\0';
+        strcat(d2,"ies");
+    }
+    else if(d2[x-1]=='s')
+    {
+        d2[x-1]='\0';
+        strcat(d2,"es");
+    }
+    else if(d2[x-1]=='h' && d2[x-2]=='c')
+    {
+        d2[x-2]='\0';
+        strcat(d2,"es");
+    }
+    else if(d2[x-1]=='h' && d2[x-2]=='s')
+    {
+          d2[x-2]='\0';
+        strcat(d2,"es");
+    }
+    else
+    {
+        d2[x]='s';
+        d2[x+1]='\0';
     }
 }
 int main()
 {
-    char d[50];
-    printf("Cumleyi giriniz:");
-    fgets(d,50,stdin);
-    fazlaBoslukSil(d);
-    printf("\nSon Hali:%s",d);
+    char d[80]="chair",d2[80];
+    cogulYap(d,d2);
+    printf("%s cogulu:%s",d,d2);
     return 0;
 }
