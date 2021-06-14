@@ -1,41 +1,35 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include<string.h>
-void cogulYap(char *d,char *d2)
-{
-    int x;
-    x=strlen(d);
-    strcpy(d2,d);
-    if(d2[x-1]=='y')
-    {
-        d2[x-1]='\0';
-        strcat(d2,"ies");
-    }
-    else if(d2[x-1]=='s')
-    {
-        d2[x-1]='\0';
-        strcat(d2,"es");
-    }
-    else if(d2[x-1]=='h' && d2[x-2]=='c')
-    {
-        d2[x-2]='\0';
-        strcat(d2,"es");
-    }
-    else if(d2[x-1]=='h' && d2[x-2]=='s')
-    {
-          d2[x-2]='\0';
-        strcat(d2,"es");
-    }
-    else
-    {
-        d2[x]='s';
-        d2[x+1]='\0';
-    }
-}
 int main()
 {
-    char d[80]="chair",d2[80];
-    cogulYap(d,d2);
-    printf("%s cogulu:%s",d,d2);
+    char d[10][20];
+    char gec[10];
+    int i,j,gec2,say,e[10]={0};
+    for(i=0;i<10;i++)
+    {
+        scanf("%s",d[i]);
+        printf("\n");
+    }
+    for(i=0;i<10;i++)
+        e[i]=strlen(d[i]);
+    for(i=0;i<10;i++)
+    {
+        for(j=0;j<9;j++)
+        {
+            if(e[j]<e[j+1])
+            {
+                gec2=e[j];
+                e[j]=e[j+1];
+                e[j+1]=gec2;
+                strcpy(gec,d[j]);
+                strcpy(d[j],d[j+1]);
+                strcpy(d[j+1],gec);
+            }
+        }
+    }
+    printf("\n\nEn uzundan en kisaya:\n");
+    for(i=0;i<10;i++)
+        printf("%s\n",d[i]);
     return 0;
 }
