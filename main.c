@@ -3,26 +3,26 @@
 #include<string.h>
 int main()
 {
-    char d[50],e[50];
-    int i,x,y,say=0;
-    printf("Misralari giriniz:\n");
-    printf("1.misra:\n");
-    fgets(d,50,stdin);
-    printf("2.misra:\n");
-    fgets(e,50,stdin);
-    x=strlen(d);
-    y=strlen(e);
-    for(i=0;d[x-1-i]!=' ' &&  e[y-1-i]!=' ';i++)
+    char cumle[80];
+    char kelime[20];
+    char *ara;
+    int say=0,i;
+    printf("Cumle giriniz:");
+    fgets(cumle,80,stdin);
+    for(i=0;cumle[i]!='\0';i++)
+        printf("d[%d]:%c:%d\n",i,cumle[i],&cumle[i]);
+    printf("\nAranacak kelimeyi giriniz:");
+    scanf("%20s",kelime);
+    ara=strstr(cumle,kelime);
+    printf("\nara:%c cumle:%d ara:%d ",*ara,cumle,ara);
+    while(ara!=NULL)
     {
-        if(d[x-1-i]==e[y-1-i])
-            say++;
-
+        say++;
+        ara++;
+        printf("\nara:%d",ara);
+        ara=strstr(ara,kelime);
+        printf("\nsay:%d ara:%d\n",say,ara);
     }
-    if(say==i)
-        printf("\n\nGirilen misralarda cinasli kafiye vardir");
-    else
-       printf("\n\nGirilen misralarda cinasli kafiye yoktur");
-
-
+    printf("\"%s\" kelimesi cumle icinde %d kere gecer",kelime,say);
     return 0;
 }
