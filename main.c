@@ -1,35 +1,30 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include<string.h>
-void sansur(char d[])
+void hesapla(char *d,int *x,int *y,int *b)
 {
-    char *p,a[3][10]={"lan","inek","aptal"};
-    int i,j,x;
+    int i,a=0,c=0,e=0;
     for(i=0;d[i]!='\0';i++)
     {
-        for(x=0;x<3;x++)
-          {
-              printf("\nx:%d p:%d d:%d p-d:%d",x,p,d,p-d);
-              p=strstr(d+i,a[x]);
-              if(p!=NULL)
-              {
-                  printf("j p-d:%d\n",p-d);
-                  for(j=p-d;j<p-d+strlen(a[x]);j++)
-                   {
-                       d[j]='*';
-                       printf("j:%d\n",j);
-                   }
-              }
-          }
+        if(d[i]=='X' || d[i]=='x')
+            *x+=1;
+        else if(d[i]=='Y' || d[i]=='y')
+            *y+=1;
+        else if(d[i]==' ')
+            *b+=1;
     }
+  /**x=a;
+    *y=c;
+    *b=e;*/
 }
 int main()
 {
-    char d[200];
-    printf("Cumleyi giriniz:\n");
-    fgets(d,200,stdin);
-    sansur(d);
-    printf("\n\nYeni Hal\n");
-    printf("%s\n",d);
+    char d[50];
+    int x=0,y=0,b=0;
+    printf("Robot icin komut dizigisini:");
+    fgets(d,50,stdin);
+    hesapla(d,&x,&y,&b);
+    printf("\n\nBekleme sayisi:%d\n",b);
+    printf("Son konumun x i:%d\n",x);
+    printf("Son konumun y si:%d\n",y);
     return 0;
 }
