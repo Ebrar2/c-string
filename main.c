@@ -3,21 +3,18 @@
 
 int main()
 {
-    char kod[5][20];
+    char d[4][50];
     int i;
-    printf("\nDers kodlarini giriniz:");
-    for(i=0;i<5;i++)
+    printf("Siirinizi giriniz:\n");
+    for(i=0;i<4;i++)
     {
-        printf("\n%d. dersin kodu:",i+1);
-        scanf("%s",&kod[i][0]);
-        //scanf("%s",kod[i]);
+        scanf("%[^\n]",d[i]);
+        fflush(stdin);
+        printf("\n");
     }
-    printf("\nB harfiyle baslayanlar:\n");
-      for(i=0;i<5;i++)
-    {
-        if(kod[i][0]=='B')
-            printf("%s,",kod[i]);
-
-    }
+    for(i=0;i<4;i++)
+       {
+           printf("%c",d[i][0]);
+       }
     return 0;
 }
