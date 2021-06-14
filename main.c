@@ -1,35 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include<string.h>
+int kacinci(char s[],char s2[])
+{
+    char *p,s1[strlen(s)+1];
+    int say=0;
+    strcpy(s1,s);
+    p=strtok(s1," ");
+    say++;
+    if(strcmp(p,s2)==0)
+         return 1;
+    while(p!=NULL)
+    {
+          say++;
+          p=strtok(NULL," ");
+          if(strcmp(p,s2)==0)
+            return say;
+    }
+}
 int main()
 {
-    char d[10][20];
-    char gec[10];
-    int i,j,gec2,say,e[10]={0};
-    for(i=0;i<10;i++)
-    {
-        scanf("%s",d[i]);
-        printf("\n");
-    }
-    for(i=0;i<10;i++)
-        e[i]=strlen(d[i]);
-    for(i=0;i<10;i++)
-    {
-        for(j=0;j<9;j++)
-        {
-            if(e[j]<e[j+1])
-            {
-                gec2=e[j];
-                e[j]=e[j+1];
-                e[j+1]=gec2;
-                strcpy(gec,d[j]);
-                strcpy(d[j],d[j+1]);
-                strcpy(d[j+1],gec);
-            }
-        }
-    }
-    printf("\n\nEn uzundan en kisaya:\n");
-    for(i=0;i<10;i++)
-        printf("%s\n",d[i]);
+    char s1[]="Bil102 final sinavi bitti";
+    char s2[]="sinavi";
+    printf("%s\ndizgisinde %s dizgisi %d.kelimededir",s1,s2,kacinci(s1,s2));
     return 0;
 }
